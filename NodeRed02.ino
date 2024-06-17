@@ -7,10 +7,9 @@
 #include <PubSubClient.h>
 
 #define LedPin 2 // ESP32 in-board LED pin
-const int sensorPin = 25;
 Servo myservo;
-const char* ssid = "zaimi75_2.4GHz@unifi"; // WiFi SSID
-const char* password = "ic750222"; // WiFi Password
+const char* ssid = "wifi-id"; // WiFi SSID
+const char* password = "wifi-password"; // WiFi Password
 const char* mqtt_server = "broker.hivemq.com"; // hivemq Server URL
 
 WiFiClient espClient;
@@ -86,7 +85,6 @@ void reconnect() {
       Serial.println("Connected");
       client.subscribe("/LedControl");
       client.subscribe("/ServoControl");
-      client.subscribe("/Vibration");
     } else {
       Serial.print("Failed, rc=");
       Serial.print(client.state());
