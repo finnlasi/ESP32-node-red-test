@@ -1,0 +1,370 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "78ea591517c5e2f1",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/LedControl",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "487e28db3a4bbb7e",
+        "x": 550,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b70fb83aa6f0fdbf",
+        "type": "ui_button",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "3404338650e23229",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "a",
+        "payloadType": "str",
+        "topic": "LedControl",
+        "topicType": "msg",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "78ea591517c5e2f1"
+            ]
+        ]
+    },
+    {
+        "id": "c4e603731ead9f37",
+        "type": "ui_button",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "3404338650e23229",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "b",
+        "payloadType": "str",
+        "topic": "LedControl",
+        "topicType": "msg",
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "78ea591517c5e2f1"
+            ]
+        ]
+    },
+    {
+        "id": "5aaa056a7e780767",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/ServoControl",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "487e28db3a4bbb7e",
+        "x": 560,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9bbe639805ed2f41",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "5d4c6a45f64bb421",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 530,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c0796325a9df272b",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "states",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 500,
+        "wires": [
+            [
+                "5aaa056a7e780767",
+                "9bbe639805ed2f41"
+            ]
+        ]
+    },
+    {
+        "id": "504bb34bb37b5b92",
+        "type": "ui_slider",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "5d4c6a45f64bb421",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "/ServoControl",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "c0796325a9df272b"
+            ]
+        ]
+    },
+    {
+        "id": "2dc0ed8a0bae57d7",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "/Vibration",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "487e28db3a4bbb7e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 700,
+        "wires": [
+            [
+                "639530110915db2f",
+                "8716e8ac1c1523c2",
+                "49f8539ff35a106c"
+            ]
+        ]
+    },
+    {
+        "id": "639530110915db2f",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d38029f818d52fd4",
+        "type": "ui_audio",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "70fabedfb183c0fc",
+        "voice": "Google Bahasa Indonesia",
+        "always": "",
+        "x": 620,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "8716e8ac1c1523c2",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49f8539ff35a106c",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 430,
+        "y": 760,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "187752fb84a7a735",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "6d41ff57658d294e",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "37d6583c3c0c1a98",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "6d41ff57658d294e",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3e348dcc47147735",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "6d41ff57658d294e",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "487e28db3a4bbb7e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3404338650e23229",
+        "type": "ui_group",
+        "name": "Led Control",
+        "tab": "354acf8dc606fdc2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5d4c6a45f64bb421",
+        "type": "ui_group",
+        "name": "Servo Control",
+        "tab": "354acf8dc606fdc2",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "70fabedfb183c0fc",
+        "type": "ui_group",
+        "name": "vibrate",
+        "tab": "354acf8dc606fdc2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6d41ff57658d294e",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "354acf8dc606fdc2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
